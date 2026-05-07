@@ -1276,3 +1276,31 @@ input:focus, textarea:focus {
     .teacher-card { width: 45%; }
     .review-card { width: 80%; }
 }
+
+@media (max-width: 768px) {
+    .nav-menu-list {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 10px;
+        padding: 15px 0;
+    }
+
+    .nav-menu-list.show-menu {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+
+    .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: white;
+    }
+}
