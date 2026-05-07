@@ -442,15 +442,14 @@ if (currentPage === "dashboard.html") {
         }
     }
 }
-/* =========================
-   MOBILE MENU
-========================= */
+/* MOBILE MENU FIX */
+document.addEventListener("DOMContentLoaded", function () {
+    const mobileMenu = document.getElementById("mobile-menu");
+    const navList = document.getElementById("nav-list");
 
-const mobileMenu = document.getElementById("mobile-menu");
-const navList = document.getElementById("nav-list");
-
-if (mobileMenu && navList) {
-    mobileMenu.addEventListener("click", function () {
-        navList.classList.toggle("show-menu");
-    });
-}
+    if (mobileMenu && navList) {
+        mobileMenu.addEventListener("click", function () {
+            navList.classList.toggle("show-menu");
+        });
+    }
+});
