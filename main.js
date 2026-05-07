@@ -442,3 +442,15 @@ if (currentPage === "dashboard.html") {
         }
     }
 }
+/* =========================
+   MOBILE MENU
+========================= */
+
+const mobileMenu = document.getElementById("mobile-menu");
+const navList = document.getElementById("nav-list");
+
+if (mobileMenu && navList) {
+    mobileMenu.addEventListener("click", function () {
+        navList.classList.toggle("show-menu");
+    });
+}
