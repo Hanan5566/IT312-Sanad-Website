@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz</title>
+
+<link rel="stylesheet" href="project.css">
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="header">
+
+<img src="images/logo.png" class="logo">
+
+<nav class="main-navbar">
+    <div class="nav-container">
+      
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="nav-menu-list" id="nav-list">
+            <li><a href="Home_page.html">Home</a></li>
+            <li><a href="Course_Content.html"class="active" >Course Content</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="about_us.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            
+            
+        </ul>
+    </div>
+</nav>
+
+</div>
+
+</nav>
+<body>
+   <div class="container" style="background: transparent; border: none; box-shadow: none;">
+    <div class="main-wrapper">
+        <aside class="lesson-sidebar">
+            <h3 style="color:#1F3A5F; border-bottom: 2px solid #E6A11C; padding-bottom:10px;">Study Skills</h3>
+            <ul class="lesson-menu">
+                <li><a href="1.study skills.html">Review Lesson</a></li>
+                <li class="active"><a href="study skills_quiz.html">Unit Quiz</a></li>
+            </ul>
+        </aside>
+
+<main class="lesson-content-card">
+    <h1 style="text-align: center; color: #1F3A5F; margin-bottom: 10px;">📝 Quiz 3 - Study Skills</h1>
+    <p style="text-align: center; color: #6B6B6B; margin-bottom: 30px;">Choose the correct answer for each question.</p>
+    
+    <form action="result.html" method="get" class="quiz-form">
+        <div class="question-card">
+            <p>1. Which method improves long-term memory?</p>
+            <label><input type="radio" name="q1" value="a" required> Active recall</label>
+            <label><input type="radio" name="q1" value="b" required> Last-minute cramming</label>
+            <label><input type="radio" name="q1" value="c" required> Skipping revision</label>
+        </div>
+
+        <div class="question-card">
+            <p>2. Spaced repetition means:</p>
+            <label><input type="radio" name="q2" value="a" required> Reviewing material over time</label>
+            <label><input type="radio" name="q2" value="b" required> Reading once only</label>
+            <label><input type="radio" name="q2" value="c" required> Memorizing everything in one day</label>
+        </div>
+
+        <div class="question-card">
+            <p>3. Good study habits usually require:</p>
+            <label><input type="radio" name="q3" value="a" required> A quiet and organized space</label>
+            <label><input type="radio" name="q3" value="b" required> Loud distractions</label>
+            <label><input type="radio" name="q3" value="c" required> No planning</label>
+        </div>
+
+        <div class="question-card">
+            <p>4. Note-taking is useful because it helps students:</p>
+            <label><input type="radio" name="q4" value="a" required> Review key ideas</label>
+            <label><input type="radio" name="q4" value="b" required> Forget content</label>
+            <label><input type="radio" name="q4" value="c" required> Avoid class participation</label>
+        </div>
+
+        <div class="question-card">
+            <p>5. One effective study strategy is:</p>
+            <label><input type="radio" name="q5" value="a" required> Setting clear goals</label>
+            <label><input type="radio" name="q5" value="b" required> Waiting until the night before the exam</label>
+            <label><input type="radio" name="q5" value="c" required> Multitasking with distractions</label>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <input type="submit" value="Submit Results" class="submit-btn" style="width: 250px; cursor: pointer;">
+        </div>
+    </form>
+</main>
+    </div>
+</div>
+
+<footer class="main-footer">
+    <div class="footer-logo">
+        <a href="Home_page.html">
+            <img src="images/logo.png" alt="Logo" width="100">
+        </a>
+    </div>
+
+    <div class="footer-center-content">
+        <div class="footer-socials">
+            <a href="https://www.facebook.com"><img src="images/fb-icon.png" alt="FB"></a>
+            <a href="https://www.twitter.com"><img src="images/tw-icon.png" alt="TW"></a>
+            <a href="https://www.instagram.com"><img src="images/ig-icon.png" alt="IG"></a>
+        </div>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <span class="divider">|</span>
+            <a href="terms.html">Terms of Use</a>
+            <span class="divider">|</span>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="footer-spacer"></div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>

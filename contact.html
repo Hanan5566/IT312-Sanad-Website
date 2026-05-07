@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Sanad</title>
+
+<link rel="stylesheet" href="project.css">
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="header">
+
+<img src="images/logo.png" class="logo">
+
+<nav class="main-navbar">
+    <div class="nav-container">
+      
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="nav-menu-list" id="nav-list">
+            <li><a href="Home_page.html">Home</a></li>
+            <li><a href="Course_Content.html" >Course Content</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="about_us.html">About Us</a></li>
+            <li><a href="contact.html"class="active">Contact Us</a></li>
+            
+            
+        </ul>
+    </div>
+</nav>
+
+</div>
+
+</nav>
+<div class="container" style="background: transparent; border: none;">
+    <div class="breadcrumb" style="margin-bottom: 20px; color: #6B6B6B;">
+        <a href="Home_page.html" style="text-decoration:none; color:#C64A12;">Home</a> > <span>Contact Sanad</span>
+    </div>
+
+    <main>
+	<h1 style="color: #1F3A5F; font-size: 32px;"> Contact Sanad</h1>
+        <div class="contact-container" style="text-align: center;">
+            
+            
+            <div class="contact-card">
+                <form id="contactForm" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+
+	
+
+  <footer class="main-footer">
+    <div class="footer-logo">
+        <a href="Home_page.html">
+            <img src="images/logo.png" alt="Logo" width="100">
+        </a>
+    </div>
+
+    <div class="footer-center-content">
+        <div class="footer-socials">
+            <a href="https://www.facebook.com"><img src="images/fb-icon.png" alt="FB"></a>
+            <a href="https://www.twitter.com"><img src="images/tw-icon.png" alt="TW"></a>
+            <a href="https://www.instagram.com"><img src="images/ig-icon.png" alt="IG"></a>
+        </div>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <span class="divider">|</span>
+            <a href="terms.html">Terms of Use</a>
+            <span class="divider">|</span>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="footer-spacer"></div>
+</footer>
+
+<script>
+const contactForm = document.getElementById('contactForm');
+
+function validateFullName(name) {
+    if (name.trim() === '') {
+        return false;
+    }
+    
+    const startsWithNumber = /^[0-9]/.test(name);
+    if (startsWithNumber) {
+        return false;
+    }
+    
+    const parts = name.trim().split(/\s+/);
+    if (parts.length < 2) {
+        return false;
+    }
+    
+    return true;
+}
+
+function validateEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
+
+function validateMessage(message) {
+    return message.trim() !== '';
+}
+
+contactForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const fullname = document.getElementById('fullname').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    
+    let errorMessage = '';
+    
+    if (fullname.trim() === '') {
+        errorMessage = 'Please fill in your full name.';
+    } else if (/^[0-9]/.test(fullname)) {
+        errorMessage = 'Name cannot start with numbers.';
+    } else if (fullname.trim().split(/\s+/).length < 2) {
+        errorMessage = 'Please enter your full name (First Name and Last Name).';
+    } else if (email.trim() === '') {
+        errorMessage = 'Please fill in your email address.';
+    } else if (!validateEmail(email)) {
+        errorMessage = 'Please enter a valid email address (e.g., name@domain.com).';
+    } else if (message.trim() === '') {
+        errorMessage = 'Please write your message.';
+    }
+    
+    if (errorMessage !== '') {
+        alert(errorMessage);
+    } else {
+        const firstName = fullname.trim().split(/\s+/)[0];
+        alert(`Thank you ${firstName}! Your message has been sent successfully.`);
+        contactForm.reset();
+    }
+});
+
+
+const mobileMenuBtn = document.getElementById('mobile-menu');
+const navListMenu = document.getElementById('nav-list');
+
+if (mobileMenuBtn && navListMenu) {
+    mobileMenuBtn.onclick = function() {
+        
+        mobileMenuBtn.classList.toggle('is-active');
+        
+        navListMenu.classList.toggle('open-now');
+    };
+}
+
+
+document.addEventListener('click', function(event) {
+    if (navListMenu.classList.contains('open-now')) {
+        if (!navListMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+            navListMenu.classList.remove('open-now');
+            mobileMenuBtn.classList.remove('is-active');
+        }
+    }
+});
+</script>
+
+</body>
+</html>

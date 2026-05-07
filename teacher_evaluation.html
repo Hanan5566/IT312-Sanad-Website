@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher Evaluation</title>
+
+<link rel="stylesheet" href="project.css">
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="header">
+
+<img src="images/logo.png" class="logo">
+
+<nav class="main-navbar">
+    <div class="nav-container">
+      
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="nav-menu-list" id="nav-list">
+            <li><a href="Home_page.html">Home</a></li>
+            <li><a href="Course_Content.html" >Course Content</a></li>
+            <li><a href="dashboard.html"class="active">Dashboard</a></li>
+            <li><a href="about_us.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            
+            
+        </ul>
+    </div>
+</nav>
+
+</div>
+
+
+
+</nav>
+
+<div class="container">
+    <p style="margin-top: 20px;"><a href="Home_page.html">Home</a> &gt; <a href="dashboard.html">Dashboard</a> &gt; Teacher Evaluation</p>
+
+    <main>
+        <h1>Teacher Evaluation</h1>
+        <a href="dashboard.html" class="btn" style="background:#6B6B6B; padding:5px 15px; font-size:12px;">Back to Dashboard</a>
+
+        <form id="evaluationForm" class="card" style="margin-top:20px; max-width:100%;">
+            <h2>Evaluate Your Teacher</h2>
+
+            <label for="teacherSelect">Choose your teacher from the list:</label><br>
+            <select id="teacherSelect" name="teacher" required>
+                <option value="" disabled selected>Select a teacher…</option>
+                <option value="ahmed">Dr. Ahmed Al-Mohamed</option>
+                <option value="sara">Dr. Sara Al-Qahtani</option>
+                <option value="khalid">Dr. Khalid Al-Harbi</option>
+                <option value="maha">Dr. Maha Al-Dosari</option>
+                <option value="omar">Dr. Omar Al-Shehri</option>
+                <option value="noura">Dr. Noura Al-Otaibi</option>
+            </select>
+            <br><br>
+
+           <fieldset id="ratingGroup" style="border:1px solid #E5E5E5; padding:15px; border-radius:5px;">
+                <legend style="padding:0 10px; font-weight:bold; color:#1F3A5F;">Your Rating:</legend>
+                <label><input type="radio" name="rating" value="1"> 1 – Poor</label>
+                <label><input type="radio" name="rating" value="2"> 2 – Fair</label>
+                <label><input type="radio" name="rating" value="3"> 3 – Good</label>
+                <label><input type="radio" name="rating" value="4"> 4 – Very Good</label>
+                <label><input type="radio" name="rating" value="5"> 5 – Excellent</label>
+            </fieldset>
+            <br>
+
+            <label for="feedback">Feedback and Comments:</label><br>
+            <textarea id="feedback" name="feedback" rows="6" placeholder="Share your experience…"></textarea>
+            <br><br>
+
+            <input type="submit" id="submitEvaluation" value="Submit Evaluation" class="submit-btn">
+        </form>
+    </main>
+</div>
+
+<footer class="main-footer">
+    <div class="footer-logo">
+        <a href="Home_page.html">
+            <img src="images/logo.png" alt="Logo" width="100">
+        </a>
+    </div>
+
+    <div class="footer-center-content">
+        <div class="footer-socials">
+            <a href="https://www.facebook.com"><img src="images/fb-icon.png" alt="FB"></a>
+            <a href="https://www.twitter.com"><img src="images/tw-icon.png" alt="TW"></a>
+            <a href="https://www.instagram.com"><img src="images/ig-icon.png" alt="IG"></a>
+        </div>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <span class="divider">|</span>
+            <a href="terms.html">Terms of Use</a>
+            <span class="divider">|</span>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="footer-spacer"></div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>

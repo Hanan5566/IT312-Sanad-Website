@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Sanad Mentors</title>
+    <link rel="stylesheet" href="project.css">
+    <style>
+        .sort-label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .sort-dropdown {
+            padding: 8px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .teachers-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .teacher-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            width: 250px;
+            text-align: center;
+            background: #f9f9f9;
+        }
+        .teacher-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+   <div class="header">
+
+<img src="images/logo.png" class="logo">
+
+<nav class="main-navbar">
+    <div class="nav-container">
+      
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="nav-menu-list" id="nav-list">
+            <li><a href="Home_page.html">Home</a></li>
+            <li><a href="Course_Content.html" >Course Content</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="about_us.html"class="active">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            
+            
+        </ul>
+    </div>
+</nav>
+
+</div>
+</nav>
+
+<div class="container" style="background: transparent; border: none;">
+    
+    <div style="margin-bottom: 30px;">
+        <a href="Home_page.html" style="text-decoration:none; color: #6B6B6B;">Home</a> > <span>About Us</span>
+    </div>
+
+    <div style="margin-bottom: 40px;">
+        <h1 style="color: #1F3A5F; font-size: 32px;">About Us - Sanad Mentors</h1>
+        <p style="font-weight: bold; color: #2E2E2E;">Elite academic trainers committed to your success.</p>
+    </div>
+
+    <label for="sortTeachers" class="sort-label">Sort Teachers:</label>
+    <select id="sortTeachers" class="sort-dropdown">
+        <optgroup label="Sort by Name">
+            <option value="name_asc">A → Z</option>
+            <option value="name_desc">Z → A</option>
+        </optgroup>
+        <optgroup label="Sort by Experience">
+            <option value="exp_high">Highest Experience</option>
+            <option value="exp_low">Lowest Experience</option>
+        </optgroup>
+    </select>
+
+    <div class="teachers-container" id="teachersContainer"></div>
+</div>
+
+<footer class="main-footer">
+    <div class="footer-logo">
+        <a href="Home_page.html">
+            <img src="images/logo.png" alt="Logo" width="100">
+        </a>
+    </div>
+    <div class="footer-center-content">
+        <div class="footer-socials">
+            <a href="https://www.facebook.com"><img src="images/fb-icon.png" alt="FB"></a>
+            <a href="https://www.twitter.com"><img src="images/tw-icon.png" alt="TW"></a>
+            <a href="https://www.instagram.com"><img src="images/ig-icon.png" alt="IG"></a>
+        </div>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <span class="divider">|</span>
+            <a href="terms.html">Terms of Use</a>
+            <span class="divider">|</span>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+    <div class="footer-spacer"></div>
+</footer>
+
+<script>
+    const teachersData = [
+        { name: "Dr. Ahmed Al-Mohamed", exp: 10, email: "coach.ahmed@sanad.org.sa", img: "images/teacher1.jpeg" },
+        { name: "Dr. Sara Al-Qahtani", exp: 7, email: "coach.sara@sanad.org.sa", img: "images/teacher2.jpeg" },
+        { name: "Dr. Khalid Al-Harbi", exp: 15, email: "coach.khalid@sanad.org.sa", img: "images/teacher3.jpeg" },
+        { name: "Dr. Maha Al-Dosari", exp: 5, email: "coach.maha@sanad.org.sa", img: "images/teacher4.jpeg" },
+        { name: "Dr. Omar Al-Shehri", exp: 12, email: "coach.omar@sanad.org.sa", img: "images/teacher5.JPEG" },
+        { name: "Dr. Noura Al-Otaibi", exp: 8, email: "coach.noura@sanad.org.sa", img: "images/teacher6.jpeg" }
+    ];
+
+    let currentTeachers = [...teachersData];
+
+    function renderTeachers(teachersArray) {
+        const container = document.getElementById("teachersContainer");
+        container.innerHTML = "";
+        teachersArray.forEach(teacher => {
+            const card = document.createElement("div");
+            card.className = "teacher-card";
+            card.innerHTML = `
+                <img src="${teacher.img}" alt="${teacher.name}">
+                <h3>${teacher.name}</h3>
+                <p class="exp">${teacher.exp} Years Exp.</p>
+                <p><a href="mailto:${teacher.email}">📧 ${teacher.email}</a></p>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function sortTeachers(type) {
+        let sorted = [...teachersData];
+        if (type === "name_asc") {
+            sorted.sort((a, b) => a.name.localeCompare(b.name));
+        } else if (type === "name_desc") {
+            sorted.sort((a, b) => b.name.localeCompare(a.name));
+        } else if (type === "exp_high") {
+            sorted.sort((a, b) => b.exp - a.exp);
+        } else if (type === "exp_low") {
+            sorted.sort((a, b) => a.exp - b.exp);
+        }
+        currentTeachers = sorted;
+        renderTeachers(currentTeachers);
+    }
+
+    function initPage() {
+        const shuffled = shuffleArray([...teachersData]);
+        currentTeachers = shuffled;
+        renderTeachers(currentTeachers);
+
+        const sortSelect = document.getElementById("sortTeachers");
+        sortSelect.addEventListener("change", (e) => {
+            sortTeachers(e.target.value);
+        });
+    }
+
+    initPage();
+	
+	
+const mobileMenuBtn = document.getElementById('mobile-menu');
+const navListMenu = document.getElementById('nav-list');
+
+if (mobileMenuBtn && navListMenu) {
+    mobileMenuBtn.onclick = function() {
+        
+        mobileMenuBtn.classList.toggle('is-active');
+       
+        navListMenu.classList.toggle('open-now');
+    };
+}
+
+
+document.addEventListener('click', function(event) {
+    if (navListMenu.classList.contains('open-now')) {
+        if (!navListMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+            navListMenu.classList.remove('open-now');
+            mobileMenuBtn.classList.remove('is-active');
+        }
+    }
+});
+</script>
+
+</body>
+</html>

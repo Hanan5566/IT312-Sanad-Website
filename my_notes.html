@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Notes</title>
+
+<link rel="stylesheet" href="project.css">
+
+<style>
+.note-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+.note-item.priority-1 {
+    background-color: #ffe6e6;
+    border-left: 5px solid #ff0000;
+}
+.note-item.priority-2 {
+    background-color: #fff9e6;
+    border-left: 5px solid #ffcc00;
+}
+.note-item.priority-3 {
+    background-color: #e6ffe6;
+    border-left: 5px solid #00cc00;
+}
+.note-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.note-content {
+    flex: 1;
+}
+.note-content strong {
+    display: block;
+    font-size: 18px;
+    color: #1F3A5F;
+}
+.note-content p {
+    margin: 5px 0 0;
+    color: #6B6B6B;
+    font-size: 14px;
+}
+.delete-checkbox {
+    margin-right: 15px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+.error-border {
+    border: 2px solid #ff0000 !important;
+}
+.error-message {
+    color: #ff0000;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="header">
+
+<img src="images/logo.png" class="logo">
+
+<nav class="main-navbar">
+    <div class="nav-container">
+      
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="nav-menu-list" id="nav-list">
+            <li><a href="Home_page.html">Home</a></li>
+            <li><a href="Course_Content.html" >Course Content</a></li>
+            <li><a href="dashboard.html"class="active">Dashboard</a></li>
+            <li><a href="about_us.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            
+            
+        </ul>
+    </div>
+</nav>
+
+</div>
+
+</nav>
+
+<div class="container">
+    <p style="margin-top: 20px;"><a href="Home_page.html">Home</a> &gt; <a href="dashboard.html">Dashboard</a> &gt; My Notes</p>
+
+    <main>
+        <h1>My Notes</h1>
+        <a href="dashboard.html" class="btn" style="background:#6B6B6B; padding:5px 15px; font-size:12px; margin-bottom: 20px; text-decoration:none; color:white; border-radius:5px;">Back to Dashboard</a>
+
+        <div class="card">
+            <h2>Add a New Note</h2>
+            <form id="noteForm">
+                <label for="noteTitle" style="font-weight:bold; color:#1F3A5F;">Title:</label>
+                <input type="text" id="noteTitle" name="noteTitle" placeholder="Enter title here...">
+
+                <label for="noteText" style="font-weight:bold; color:#1F3A5F;">Note Content:</label>
+                <textarea id="noteText" name="noteText" rows="5" placeholder="Write your note here... (minimum 30 characters)"></textarea>
+
+                <label for="notePriority" style="font-weight:bold; color:#1F3A5F;">Priority:</label>
+                <select id="notePriority" name="notePriority">
+                    <option value="1">Priority 1 – High (Red)</option>
+                    <option value="2" selected>Priority 2 – Medium (Yellow)</option>
+                    <option value="3">Priority 3 – Low (Green)</option>
+                </select>
+
+                <button type="button" id="saveBtn" class="save-btn" style="background:#1F3A5F; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; margin-right:10px;">Save</button>
+                <button type="button" id="addBtn" class="add-note-btn" style="background:#C64A12; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer;">Add Note</button>
+            </form>
+        </div>
+
+        <hr style="margin:40px 0; border:0; border-top:1px solid #E5E5E5;">
+
+        <h2>Saved Notes</h2>
+        <div id="notesList"></div>
+        <button id="deleteSelectedBtn" class="btn" style="background:#C64A12; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; margin-top:20px;">Delete Selected Notes</button>
+    </main>
+</div>
+
+<footer class="main-footer">
+    <div class="footer-logo">
+        <a href="Home_page.html">
+            <img src="images/logo.png" alt="Logo" width="100">
+        </a>
+    </div>
+
+    <div class="footer-center-content">
+        <div class="footer-socials">
+            <a href="https://www.facebook.com"><img src="images/fb-icon.png" alt="FB"></a>
+            <a href="https://www.twitter.com"><img src="images/tw-icon.png" alt="TW"></a>
+            <a href="https://www.instagram.com"><img src="images/ig-icon.png" alt="IG"></a>
+        </div>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <span class="divider">|</span>
+            <a href="terms.html">Terms of Use</a>
+            <span class="divider">|</span>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="footer-spacer"></div>
+</footer>
+
+<script>
+let notes = [];
+
+function loadNotesFromStorage() {
+    const storedNotes = localStorage.getItem('myNotes');
+    if (storedNotes) {
+        notes = JSON.parse(storedNotes);
+    } else {
+        notes = [
+            { id: 1, title: "Time Management", content: "Plan your day effectively by priorities and avoiding distractions. This is a very important skill for students to master early on.", priority: 1 },
+            { id: 2, title: "Stress Control", content: "Use breathing techniques and short breaks to manage stress effectively during exam periods.", priority: 2 }
+        ];
+        saveNotesToStorage();
+    }
+    displayNotes();
+}
+
+function saveNotesToStorage() {
+    localStorage.setItem('myNotes', JSON.stringify(notes));
+}
+
+function getPriorityColor(priority) {
+    if (priority == 1) return '#ffe6e6';
+    if (priority == 2) return '#fff9e6';
+    return '#e6ffe6';
+}
+
+function displayNotes() {
+    const notesListDiv = document.getElementById('notesList');
+    
+    if (notes.length === 0) {
+        notesListDiv.innerHTML = '<p style="color: #666; font-style: italic; text-align: center; padding: 40px;">No notes yet. Add your first note above!</p>';
+        return;
+    }
+    
+    notesListDiv.innerHTML = '';
+    
+    notes.forEach(note => {
+        const noteDiv = document.createElement('div');
+        noteDiv.className = `note-item priority-${note.priority}`;
+        noteDiv.style.backgroundColor = getPriorityColor(note.priority);
+        
+        noteDiv.innerHTML = `
+            <input type="checkbox" class="delete-checkbox" data-id="${note.id}" style="margin-right:15px; transform:scale(1.2); cursor:pointer;">
+            <img src="images/note${Math.floor(Math.random() * 2) + 1}.jpeg" alt="Note image" width="60" height="60" onerror="this.src='images/logo.png'">
+            <div class="note-content">
+                <strong>${escapeHtml(note.title)}</strong>
+                <p>${escapeHtml(note.content)}</p>
+                <small style="color:#999;">Priority: ${note.priority == 1 ? 'High (Red)' : (note.priority == 2 ? 'Medium (Yellow)' : 'Low (Green)')}</small>
+            </div>
+        `;
+        
+        notesListDiv.appendChild(noteDiv);
+    });
+}
+
+function escapeHtml(text) {
+    if (!text) return '';
+    return text.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+    });
+}
+
+function validateNote(title, content, priority) {
+    if (!content || content.trim().length < 30) {
+        alert('Note content must be at least 30 characters long.');
+        return false;
+    }
+    
+    if (!priority) {
+        alert('Please select a priority for the note.');
+        return false;
+    }
+    
+    return true;
+}
+
+function clearForm() {
+    document.getElementById('noteTitle').value = '';
+    document.getElementById('noteText').value = '';
+    document.getElementById('notePriority').value = '2';
+}
+
+function addNote() {
+    const title = document.getElementById('noteTitle').value;
+    const content = document.getElementById('noteText').value;
+    const priority = document.getElementById('notePriority').value;
+    
+    if (!validateNote(title, content, priority)) {
+        return;
+    }
+    
+    const newNote = {
+        id: Date.now(),
+        title: title || 'Untitled Note',
+        content: content.trim(),
+        priority: parseInt(priority)
+    };
+    
+    notes.push(newNote);
+    displayNotes();
+    clearForm();
+}
+
+function saveNote() {
+    const title = document.getElementById('noteTitle').value;
+    const content = document.getElementById('noteText').value;
+    const priority = document.getElementById('notePriority').value;
+    
+    if (!validateNote(title, content, priority)) {
+        return;
+    }
+    
+    const newNote = {
+        id: Date.now(),
+        title: title || 'Untitled Note',
+        content: content.trim(),
+        priority: parseInt(priority)
+    };
+    
+    notes.push(newNote);
+    saveNotesToStorage();
+    displayNotes();
+    clearForm();
+}
+
+function deleteSelectedNotes() {
+    const selectedCheckboxes = document.querySelectorAll('.delete-checkbox:checked');
+    
+    if (selectedCheckboxes.length === 0) {
+        alert('Please select at least one note to delete.');
+        return;
+    }
+    
+    const confirmDelete = confirm('Are you sure you want to delete the selected notes? This action cannot be undone.');
+    
+    if (confirmDelete) {
+        const selectedIds = [];
+        selectedCheckboxes.forEach(checkbox => {
+            selectedIds.push(parseInt(checkbox.getAttribute('data-id')));
+        });
+        
+        notes = notes.filter(note => !selectedIds.includes(note.id));
+        saveNotesToStorage();
+        displayNotes();
+    }
+}
+
+document.getElementById('addBtn').addEventListener('click', addNote);
+document.getElementById('saveBtn').addEventListener('click', saveNote);
+document.getElementById('deleteSelectedBtn').addEventListener('click', deleteSelectedNotes);
+
+loadNotesFromStorage();
+
+const mobileMenuBtn = document.getElementById('mobile-menu');
+const navListMenu = document.getElementById('nav-list');
+
+if (mobileMenuBtn && navListMenu) {
+    mobileMenuBtn.onclick = function() {
+        
+        mobileMenuBtn.classList.toggle('is-active');
+        navListMenu.classList.toggle('open-now');
+    };
+}
+
+
+document.addEventListener('click', function(event) {
+    if (navListMenu.classList.contains('open-now')) {
+        if (!navListMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+            navListMenu.classList.remove('open-now');
+            mobileMenuBtn.classList.remove('is-active');
+        }
+    }
+});
+</script>
+
+</body>
+</html>

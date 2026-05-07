@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz</title>
+
+<link rel="stylesheet" href="project.css">
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="header">
+
+<img src="images/logo.png" class="logo">
+
+<nav class="main-navbar">
+    <div class="nav-container">
+      
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="nav-menu-list" id="nav-list">
+            <li><a href="Home_page.html">Home</a></li>
+            <li><a href="Course_Content.html"class="active" >Course Content</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="about_us.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            
+            
+        </ul>
+    </div>
+</nav>
+
+</div>
+
+</nav>
+   <div class="container" style="background: transparent; border: none; box-shadow: none;">
+  <div class="breadcrumb" style="margin-bottom: 20px; color: #6B6B6B;">
+            <a href="Home_page.html" style="text-decoration:none; color:#C64A12;">Home</a> > 
+            <a href="Course_Content.html" style="text-decoration:none; color:#C64A12;">Course Content</a> > 
+            <span>Quiz</span>
+        </div>
+    <div class="main-wrapper">
+        <aside class="lesson-sidebar">
+            <h3 style="color:#1F3A5F; border-bottom: 2px solid #E6A11C; padding-bottom:10px;">Presentation Skills</h3>
+            <ul class="lesson-menu">
+                <li><a href="presentation_1.html">Review Lesson</a></li>
+                <li class="active"><a href="#">Unit Quiz</a></li>
+            </ul>
+        </aside>
+
+<main class="lesson-content-card">
+    <h1 style="text-align: center; color: #1F3A5F; margin-bottom: 10px;">📝 Quiz 5 - Presentation Skills</h1>
+    <p style="text-align: center; color: #6B6B6B; margin-bottom: 30px;">Choose the correct answer for each question.</p>
+    
+    <form action="result.html" method="get" class="quiz-form">
+        <div class="question-card">
+            <p>1. Good eye contact during a presentation helps to:</p>
+            <label><input type="radio" name="q1" value="a" required> Engage the audience</label>
+            <label><input type="radio" name="q1" value="b" required> Confuse the audience</label>
+            <label><input type="radio" name="q1" value="c" required> End the presentation early</label>
+        </div>
+
+        <div class="question-card">
+            <p>2. Slides should be:</p>
+            <label><input type="radio" name="q2" value="a" required> Clear and simple</label>
+            <label><input type="radio" name="q2" value="b" required> Full of long paragraphs</label>
+            <label><input type="radio" name="q2" value="c" required> Difficult to read</label>
+        </div>
+
+        <div class="question-card">
+            <p>3. A confident speaker usually uses:</p>
+            <label><input type="radio" name="q3" value="a" required> Clear voice and posture</label>
+            <label><input type="radio" name="q3" value="b" required> No preparation</label>
+            <label><input type="radio" name="q3" value="c" required> Reading every word from slides</label>
+        </div>
+
+        <div class="question-card">
+            <p>4. Practicing before presenting helps to:</p>
+            <label><input type="radio" name="q4" value="a" required> Improve confidence</label>
+            <label><input type="radio" name="q4" value="b" required> Increase mistakes</label>
+            <label><input type="radio" name="q4" value="c" required> Remove the need for structure</label>
+        </div>
+
+        <div class="question-card">
+            <p>5. Body language in presentations should be:</p>
+            <label><input type="radio" name="q5" value="a" required> Natural and confident</label>
+            <label><input type="radio" name="q5" value="b" required> Closed and rigid</label>
+            <label><input type="radio" name="q5" value="c" required> Distracting and random</label>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <input type="submit" value="Submit Results" class="submit-btn" style="width: 250px; cursor: pointer;">
+        </div>
+    </form>
+</main>
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="footer-logo">
+        <a href="Home_page.html">
+            <img src="images/logo.png" alt="Logo" width="100">
+        </a>
+    </div>
+
+    <div class="footer-center-content">
+        <div class="footer-socials">
+            <a href="https://www.facebook.com"><img src="images/fb-icon.png" alt="FB"></a>
+            <a href="https://www.twitter.com"><img src="images/tw-icon.png" alt="TW"></a>
+            <a href="https://www.instagram.com"><img src="images/ig-icon.png" alt="IG"></a>
+        </div>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <span class="divider">|</span>
+            <a href="terms.html">Terms of Use</a>
+            <span class="divider">|</span>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="footer-spacer"></div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
